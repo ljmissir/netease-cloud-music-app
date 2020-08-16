@@ -9,6 +9,9 @@ const mutations = {
   [types.SET_RECOMMEND_COVER](state, recommendCover) {
     state.recommendCover = recommendCover;
   },
+  [types.SET_PLAY_LIST](state, curPlayList) {
+    state.curPlayList = curPlayList;
+  },
 };
 
 export default mutations;

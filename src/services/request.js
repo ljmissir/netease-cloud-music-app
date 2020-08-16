@@ -17,7 +17,7 @@ service.interceptors.request.use(
   (config) => {
     const cookie = Cookies.get("cookie");
     config.url =
-      config.url + "?_v=" + new Date().getTime() + "&cookie=" + cookie;
+      config.url + "?_t=" + new Date().getTime() + "&cookie=" + cookie;
     return config;
   },
   (error) => {

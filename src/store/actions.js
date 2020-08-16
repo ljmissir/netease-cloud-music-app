@@ -17,6 +17,10 @@ const actions = {
     const result = await request.querySongUrl(curSongId);
     commit(types.SET_CUR_SONG, result.data[0].url);
   },
+  // 设置当前播放列表
+  setCurPlayList({ commit }, songList) {
+    commit(types.SET_PLAY_LIST, songList);
+  },
 };
 
 export default actions;

@@ -1,12 +1,7 @@
 <template>
   <div class="song-list-wrapper">
-    <van-list
-      v-model="loading"
-      :finished="finished"
-      finished-text="没有更多了"
-      @load="onLoad"
-    >
-      <van-cell
+    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+      <!-- <van-cell
         is-link
         v-for="song in songList"
         :key="song.id"
@@ -14,7 +9,22 @@
       >
         <img class="avatar" v-lazy="song.picUrl" alt />
         <span class="song">{{ song.name }}</span>
-      </van-cell>
+      </van-cell>-->
+      <div
+        class="cell-item van-cell"
+        v-for="song in songList"
+        :key="song.id"
+        @click="querySong(song.id)"
+      >
+        <div class="singer-info">
+          <img v-lazy="song.al.picUrl" alt />
+          <div class="info">
+            <p class="song-name">{{ song.name }}</p>
+            <p class="singer-name">{{ formatSinger(song) }}</p>
+          </div>
+        </div>
+        <svg-icon iconClass="right-menu" />
+      </div>
     </van-list>
   </div>
 </template>
@@ -35,7 +45,7 @@ export default {
       songId: null,
       songList: [],
       offset: 0,
-      limit: 25,
+      limit: 25
     };
   },
 
@@ -47,7 +57,7 @@ export default {
       const { limit, offset } = this;
       request
         .querySongBySingerId({ id: this.songId, limit, offset })
-        .then((res) => {
+        .then(res => {
           this.loading = false;
           this.offset += this.limit;
           if (!res.more) {
@@ -61,16 +71,19 @@ export default {
       this.songId = id;
     },
     querySong(id) {
+      const { songList } = this;
       this.setCurSongUrl({ id });
-      // request.querySongUrl({ id }).then((res) => {
-      //   console.log(res);
-      //   this.musicUrl = res.data[0].url;
-      // });
+      this.setCurPlayList(this.songList);
+    },
+    // 格式化歌手名字
+    formatSinger(singer) {
+      return singer.ar[0].name + "-" + singer.al.name;
     },
     ...mapActions({
       setCurSongUrl: "setCurSongUrl",
-    }),
-  },
+      setCurPlayList: "setCurPlayList"
+    })
+  }
 };
 </script>
 
@@ -88,10 +101,9 @@ export default {
       align-items: center;
       justify-content: space-between;
 
-      .avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
+      .singer-info {
+        display: flex;
+        align-items: center;
       }
     }
   }

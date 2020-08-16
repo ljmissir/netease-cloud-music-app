@@ -2,6 +2,7 @@
   <div id="app">
     <router-view />
     <Player />
+    <Footer />
   </div>
 </template>
 
@@ -9,13 +10,14 @@
 import Player from "@/views/player/index";
 
 export default {
-  components: { Player },
+  components: { Player }
 };
 </script>
 
 <style lang="stylus">
 @import './styls/_normalize.styl';
 
-#app
+#app {
   height: 100%;
+}
 </style>

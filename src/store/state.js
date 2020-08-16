@@ -5,6 +5,8 @@ const state = {
   curSong: "",
   // 推荐歌单封面
   recommendCover: [],
+  // 当前播放列表
+  curPalyList: [],
 };
 
 export default state;

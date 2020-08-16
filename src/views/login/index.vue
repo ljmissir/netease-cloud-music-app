@@ -2,7 +2,11 @@
   <div class="login-wrapper">
     <van-field placeholder="输入邮箱" v-model="email" />
     <van-field placeholder="密码" type="password" v-model="password" />
-    <van-button class="login-btn" type="primary" @click="login"
+    <van-button
+      class="login-btn"
+      type="primary"
+      @click="login"
+      :disabled="disabled"
       >登录</van-button
     >
   </div>
@@ -24,11 +28,11 @@ export default {
       password: "",
     };
   },
-
-  mounted() {
-    request.getDjProgram({ rid: 336355127 }).then((res) => {
-      console.log(res);
-    });
+  computed: {
+    disabled() {
+      const { email, password } = this;
+      return !email || !password;
+    },
   },
   methods: {
     login() {

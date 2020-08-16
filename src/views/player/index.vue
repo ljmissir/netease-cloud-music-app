@@ -1,6 +1,6 @@
 <template>
   <div class="player-wrapper">
-    <video :src="curSong" autoplay></video>
+    <audio :src="curSong" autoplay></audio>
   </div>
 </template>
 
