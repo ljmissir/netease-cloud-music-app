@@ -10,7 +10,7 @@ import "@/icons";
 Vue.config.productionTip = false;
 
 Vue.use(Lazyload, {
-  error: "dist/error.png",
+  error: require("@/assets/images/timg.jpg"),
   loading: require("@/assets/images/timg.jpg"),
 });
 

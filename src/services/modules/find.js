@@ -19,3 +19,13 @@ export const queryRecommendSong = (params) => {
 export const queryTopList = (params) => {
   return get("/toplist", params);
 };
+
+// 首页原型图标数据
+export const queryHomePageBall = (params) => {
+  return get("/homepage/dragon/ball", params);
+};
+
+// 首页新碟数据
+export const queryHomePageAlbum = (params) => {
+  return get("/album/newest", params);
+};

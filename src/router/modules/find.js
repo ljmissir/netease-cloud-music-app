@@ -4,7 +4,7 @@ export default [
     component: () => import("@/views/find/index"),
   },
   {
-    path: "/recommend",
+    path: "/songrcmd",
     component: () => import("@/views/recommend/index"),
   },
 ];
