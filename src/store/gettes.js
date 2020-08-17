@@ -9,3 +9,5 @@ export const recommendCoverImg = (state) => {
 };
 
 export const curPlayList = (state) => state.curPalyList;
+
+export const curPlayingIndex = (state) => state.curPlayingIndex;

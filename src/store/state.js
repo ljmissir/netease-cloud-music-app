@@ -7,6 +7,7 @@ const state = {
   recommendCover: [],
   // 当前播放列表
   curPalyList: [],
+  curPlayingIndex: 0,
 };
 
 export default state;

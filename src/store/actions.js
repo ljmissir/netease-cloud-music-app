@@ -13,14 +13,19 @@ const actions = {
     commit(types.SET_USER, result);
   },
   // 设置当前播放歌曲
-  async setCurSongUrl({ commit }, curSongId) {
-    const result = await request.querySongUrl(curSongId);
+  async setCurPlayList({ commit }, { id, songList }) {
+    const result = await request.querySongUrl({ id });
+    const index = songList.findIndex((item) => item.id === id);
+    console.log(index);
+
+    commit(types.SET_PLAY_LIST, songList);
+    commit(types.SET_Cur_PLAY_Index, index);
     commit(types.SET_CUR_SONG, result.data[0].url);
   },
   // 设置当前播放列表
-  setCurPlayList({ commit }, songList) {
-    commit(types.SET_PLAY_LIST, songList);
-  },
+  // setCurPlayList({ commit }, songList) {
+  //   commit(types.SET_PLAY_LIST, songList);
+  // },
 };
 
 export default actions;

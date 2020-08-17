@@ -7,11 +7,12 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  computed: { ...mapGetters(["curSong"]) },
+  computed: { ...mapGetters(["curSong", "curPlayList", "curPlayingIndex"]) },
 };
 </script>
 
 <style lang="stylus">
-.player-wrapper
-  position fixed
+.player-wrapper {
+  position: fixed;
+}
 </style>

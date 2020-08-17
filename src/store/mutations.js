@@ -12,6 +12,9 @@ const mutations = {
   [types.SET_PLAY_LIST](state, curPlayList) {
     state.curPlayList = curPlayList;
   },
+  [types.SET_Cur_PLAY_Index](state, curPlayingIndex) {
+    state.curPlayingIndex = curPlayingIndex;
+  },
 };
 
 export default mutations;
