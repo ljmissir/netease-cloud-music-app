@@ -1,5 +1,10 @@
 import { get } from "../request";
 
+// 获取默认热搜关键字
+export const queryDefaultHotSearchKey = (params) => {
+  return get("/search/default", params);
+};
+
 // 获取banner
 export const queryBannerList = (params) => {
   return get("/banner", params);

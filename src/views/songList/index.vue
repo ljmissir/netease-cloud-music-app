@@ -10,14 +10,9 @@
         <img class="avatar" v-lazy="song.picUrl" alt />
         <span class="song">{{ song.name }}</span>
       </van-cell>-->
-      <div
-        class="cell-item van-cell"
-        v-for="song in songList"
-        :key="song.id"
-        @click="querySong(song.id)"
-      >
+      <div class="cell-item van-cell" v-for="song in songList" :key="song.id" @click="querySong(song.id)">
         <div class="singer-info">
-          <img v-lazy="song.al.picUrl" alt />
+          <!-- <img v-lazy="song.al.picUrl" alt /> -->
           <div class="info">
             <p class="song-name">{{ song.name }}</p>
             <p class="singer-name">{{ formatSinger(song) }}</p>
@@ -45,7 +40,7 @@ export default {
       songId: null,
       songList: [],
       offset: 0,
-      limit: 25
+      limit: 25,
     };
   },
 
@@ -72,8 +67,8 @@ export default {
     },
     querySong(id) {
       const { songList } = this;
-      this.setCurSongUrl({ id });
-      this.setCurPlayList(this.songList);
+      // this.setCurSongUrl({ id });
+      this.setCurPlayList({ songList, id });
     },
     // 格式化歌手名字
     formatSinger(singer) {
@@ -81,9 +76,9 @@ export default {
     },
     ...mapActions({
       setCurSongUrl: "setCurSongUrl",
-      setCurPlayList: "setCurPlayList"
-    })
-  }
+      setCurPlayList: "setCurPlayList",
+    }),
+  },
 };
 </script>
 

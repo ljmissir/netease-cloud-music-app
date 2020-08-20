@@ -1,7 +1,7 @@
 <template>
   <div class="find-wrapper">
     <div class="header">
-      <van-search />
+      <van-search v-model="realkeyword" @focus="search" />
     </div>
     <div class="swipe-wrapper">
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="red">
@@ -40,9 +40,11 @@ export default {
       bannerList: [],
       tabList: [],
       currentDate: null,
+      realkeyword: "",
     };
   },
   created() {
+    this.queryDefaultHotSearchKey();
     this.queryBannerList();
     this.queryTopList();
     this.queryHomePageBall();
@@ -53,6 +55,16 @@ export default {
     ...mapMutations({
       setRecommendCover: "SET_RECOMMEND_COVER",
     }),
+    search() {
+      this.$router.push("/search");
+    },
+    // 获取默认搜索关键字
+    queryDefaultHotSearchKey() {
+      request.queryDefaultHotSearchKey().then(res => {
+        this.realkeyword = res.data.realkeyword;
+        console.log(res);
+      });
+    },
     // 获取当前日期
     getCurrentDate() {
       let date = new Date().getDate();
