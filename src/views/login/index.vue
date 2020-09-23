@@ -1,11 +1,11 @@
 <template>
   <div class="login-wrapper">
     <van-field placeholder="输入邮箱" v-model="email" />
-    <van-field placeholder="密码" type="password" v-model="password" />
+    <van-field placeholder="输入密码" type="password" v-model="password" />
     <van-button
       class="login-btn"
       type="primary"
-      @click="login"
+      @click="submit"
       :disabled="disabled"
       >登录</van-button
     >
@@ -13,51 +13,64 @@
 </template>
 
 <script>
-import Vue from "vue";
-import request from "@/services/index";
 import { Button, Field } from "vant";
-import { mapActions } from "vuex";
+import request from "@/services";
+const { reactive, toRefs, computed } = require("vue");
+const { useStore } = require("vuex");
 
-Vue.use(Button);
-Vue.use(Field);
+console.log(request);
 
 export default {
-  data() {
-    return {
-      email: "",
+  components: { VanButton: Button, VanField: Field },
+  setup() {
+    const store = useStore();
+
+    const state = reactive({
+      email: "ljmissir@163.com",
       password: "",
+    });
+
+    const disabled = computed(() => {
+      return !state.email || !state.password;
+    });
+
+    const setUser = (params) => {
+      store.dispatch("setUser", params);
     };
-  },
-  computed: {
-    disabled() {
-      const { email, password } = this;
-      return !email || !password;
-    },
-  },
-  methods: {
-    login() {
-      const { email, password } = this;
-      this.setCurUser({ email, password });
-    },
-    ...mapActions({
-      setCurUser: "setCurUser",
-    }),
+
+    const submit = () => {
+      const { email, password } = state;
+      setUser({ email, password });
+    };
+
+    return {
+      ...toRefs(state),
+      submit,
+      disabled,
+    };
   },
 };
 </script>
 
-<style lang="stylus">
-.login-wrapper
-  padding 0 40px
-  margin 40% auto
-  .van-cell
-    padding 26px 16px
-    &:first-child
-      margin-bottom 30px
-  .login-btn
-    width 100%
-    background #C20C0C
-    border none
-    border-radius 40px
-    margin-top 60px
+<style lang="scss" scoped>
+.login-wrapper {
+  padding: 0 40px;
+  margin: 40% auto;
+
+  .van-cell {
+    padding: 26px 16px;
+
+    &:first-child {
+      margin-bottom: 30px;
+    }
+  }
+
+  .login-btn {
+    width: 100%;
+    background: rgb(202, 62, 47);
+    border: none;
+    border-radius: 40px;
+    margin-top: 60px;
+  }
+}
 </style>

@@ -1,6 +1,6 @@
 export default [
   {
-    path: "/singerList",
-    component: () => import("@/views/singerList/index.vue"),
+    path: "/singer",
+    component: () => import("@/views/singer/index"),
   },
 ];

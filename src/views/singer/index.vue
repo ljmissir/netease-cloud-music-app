@@ -1,6 +1,6 @@
 <template>
   <div>
-歌曲详情
+歌手列表
   </div>
 </template>
 

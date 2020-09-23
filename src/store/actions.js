@@ -1,31 +1,16 @@
 import * as types from "./mutation-types";
-import request from "@/services/index";
-const Cookies = require("js-cookie");
+import request from "@/services";
 import router from "@/router";
+const Cookies = require("js-cookie");
 
-const actions = {
-  // 设置用户信息
-  async setCurUser({ commit }, data) {
-    const result = await request.login(data);
-    console.log(result, 123);
-    Cookies.set("cookie", result.cookie);
-    router.push("/find");
-    commit(types.SET_USER, result);
-  },
-  // 设置当前播放歌曲
-  async setCurPlayList({ commit }, { id, songList }) {
-    const result = await request.querySongUrl({ id });
-    const index = songList.findIndex((item) => item.id === id);
-    console.log(index);
-
-    commit(types.SET_PLAY_LIST, songList);
-    commit(types.SET_Cur_PLAY_Index, index);
-    commit(types.SET_CUR_SONG, result.data[0].url);
-  },
-  // 设置当前播放列表
-  // setCurPlayList({ commit }, songList) {
-  //   commit(types.SET_PLAY_LIST, songList);
-  // },
+export const setBaseParams = function({ commit }, data) {
+  commit(types.SET_BASE_PARAMS, data);
 };
 
-export default actions;
+export const setUser = async function({ commit }, data) {
+  const result = await request.login(data);
+  console.log(result, 123);
+  Cookies.set("cookie", result.cookie);
+  router.push("/find");
+  commit(types.SET_USER, result);
+};

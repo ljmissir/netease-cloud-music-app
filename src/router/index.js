@@ -1,19 +1,19 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import authorRoutes from "./modules/index";
 
-Vue.use(VueRouter);
-
 const constanceRoutes = [
+  {
+    path: "/",
+    redirect: "/login",
+  },
   {
     path: "/login",
     component: () => import("@/views/login/index"),
   },
 ];
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHashHistory(),
   routes: [...constanceRoutes, ...authorRoutes],
 });
 

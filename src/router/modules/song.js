@@ -1,10 +1,10 @@
 export default [
   {
-    path: "/songList",
-    component: () => import("@/views/songList/index.vue"),
+    path: "/song",
+    component: () => import("@/views/song/index"),
   },
   {
     path: "/songDetail",
-    component: () => import("@/views/songDetail/index.vue"),
+    component: () => import("@/views/songDetail/index"),
   },
 ];

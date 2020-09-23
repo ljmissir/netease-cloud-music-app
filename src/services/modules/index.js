@@ -1,5 +1,5 @@
 // 登录
-import { get } from "../request";
+import { get } from "@/utils/request";
 
 export const login = (params) => {
   return get("/login", params);

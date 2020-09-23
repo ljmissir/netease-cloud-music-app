@@ -1,20 +1,18 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import { createStore } from "vuex";
 import state from "./state";
 import mutations from "./mutations";
-import actions from "./actions";
-import * as getters from "./gettes";
+import * as actions from "./actions";
+import * as getters from "./getters";
 
-const createLogger = require("vuex/dist/logger");
+const { createLogger } = require("vuex/dist/vuex.cjs");
 
-const debug = process.env.NODE_ENV !== "prodution";
+const debug = process.env.NODE_ENV !== "production";
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default createStore({
   state,
   mutations,
   actions,
   getters,
+  // modules: {},
   plugins: debug ? [createLogger()] : [],
 });
