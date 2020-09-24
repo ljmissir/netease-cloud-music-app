@@ -18,18 +18,18 @@ export default {
   setup() {
     const state = reactive({
       count: 0,
-      curSongUrl: "",
+      curSongUrl: ""
     });
 
     const store = useStore();
 
     let { curIndex, playList } = store.getters;
 
-    const setCurIndex = (curIndex) => {
+    const setCurIndex = curIndex => {
       store.commit("SET_CUR_INDEX", curIndex);
     };
 
-    const updateTime = (e) => {
+    const updateTime = e => {
       const time = e.target.currentTime;
     };
 
@@ -39,9 +39,8 @@ export default {
     };
 
     const next = () => {
-      // let { curIndex } = store.getters;
       curIndex += 1;
-      if (curIndex === playList.value.length) {
+      if (curIndex === playList.length) {
         curIndex = 0;
       }
       setCurIndex(curIndex);
@@ -56,9 +55,9 @@ export default {
     return {
       ended,
       updateTime,
-      ...toRefs(state),
+      ...toRefs(state)
     };
-  },
+  }
 };
 </script>
 
