@@ -2,7 +2,6 @@ const state = {
   baseParams: {},
   user: "",
   playList: [],
-  curSong: {},
   curIndex: 0,
 };
 
