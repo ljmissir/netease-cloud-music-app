@@ -1,6 +1,9 @@
 <template>
   <div class="header">
-    <van-search v-model="hotSearch" @focus="search" />
+    <van-search
+      v-model="hotSearch"
+      @focus="search"
+    />
   </div>
 </template>
 

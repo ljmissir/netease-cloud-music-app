@@ -1,3 +1,9 @@
 export const baseParams = (state) => state.baseParams;
 
-export const username = (state) => state.username;
+export const user = (state) => state.user;
+
+export const playList = (state) => state.playList;
+
+export const curIndex = (state) => state.curIndex;
+
+export const curSong = (state) => state.playList[state.curIndex];

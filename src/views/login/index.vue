@@ -1,24 +1,27 @@
 <template>
   <div class="login-wrapper">
-    <van-field placeholder="输入邮箱" v-model="email" />
-    <van-field placeholder="输入密码" type="password" v-model="password" />
+    <van-field
+      placeholder="输入邮箱"
+      v-model="email"
+    />
+    <van-field
+      placeholder="输入密码"
+      type="password"
+      v-model="password"
+    />
     <van-button
       class="login-btn"
       type="primary"
       @click="submit"
       :disabled="disabled"
-      >登录</van-button
-    >
+    >登录</van-button>
   </div>
 </template>
 
 <script>
 import { Button, Field } from "vant";
-import request from "@/services";
 const { reactive, toRefs, computed } = require("vue");
 const { useStore } = require("vuex");
-
-console.log(request);
 
 export default {
   components: { VanButton: Button, VanField: Field },
@@ -34,7 +37,7 @@ export default {
       return !state.email || !state.password;
     });
 
-    const setUser = (params) => {
+    const setUser = params => {
       store.dispatch("setUser", params);
     };
 

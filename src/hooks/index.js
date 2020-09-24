@@ -1,4 +1,5 @@
 const { ref } = require("vue");
+const { useStore } = require("vuex");
 
 // 获取验证码
 const useCountDown = (count) => {
@@ -23,24 +24,17 @@ const useCountDown = (count) => {
   return [text, setCount, count];
 };
 
-// 加减1
-const useCount = (num) => {
-  const count = ref(num);
-  const increase = () => {
-    count.value++;
+const useSetPlayList = ({ songs, curSong }) => {
+  const store = useStore();
+  console.log(curSong, 987);
+  const setPlayList = () => {
+    store.dispatch("setPlayList", songs);
   };
 
-  const decrease = () => {
-    if (count.value <= 1) {
-      return;
-    }
-    count.value--;
-  };
-
-  return [count, increase, decrease];
+  return { setPlayList };
 };
 
 module.exports = {
   useCountDown,
-  useCount,
+  useSetPlayList,
 };

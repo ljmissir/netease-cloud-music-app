@@ -1,6 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 import { Toast } from "vant";
+
 const Cookies = require("js-cookie");
 
 const service = axios.create({
@@ -15,6 +16,7 @@ service.defaults.headers.post["Content-Type"] =
 // 请求拦截器
 service.interceptors.request.use(
   (config) => {
+    Toast.loading("加载中...");
     const cookie = Cookies.get("cookie");
     config.url =
       config.url + "?_t=" + new Date().getTime() + "&cookie=" + cookie;
@@ -29,8 +31,8 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   (response) => {
-    Toast.clear();
     if (response.status === 200) {
+      Toast.clear();
       return Promise.resolve(response);
     }
     return Promise.reject(response);

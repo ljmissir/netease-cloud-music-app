@@ -10,7 +10,7 @@
         <img :src="item.iconUrl" />
       </div>
       <div class="name">{{ item.name }}</div>
-    </router-link>
+      </router-link>
   </div>
 </template>
 
@@ -43,7 +43,7 @@ export default {
       console.log(state.tabList, 123);
     };
 
-    const resolvePath = (tab) => {
+    const resolvePath = tab => {
       const lastLine = tab.url.lastIndexOf("/");
       const path = tab.url.slice(lastLine);
       return path;
@@ -59,7 +59,7 @@ export default {
 
 <style lang="scss" scoped>
 .tab-wrapper {
-  padding-top: 240px;
+  margin-top: -30px;
   display: flex;
   align-items: center;
   justify-content: space-around;

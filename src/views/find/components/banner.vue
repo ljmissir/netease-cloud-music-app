@@ -1,10 +1,17 @@
 <template>
   <div class="swipe-wrapper">
-    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="red">
-      <van-swipe-item v-for="bannerItem in bannerList" :key="bannerItem.id">
+    <van-swipe
+      class="my-swipe"
+      :autoplay="3000"
+      indicator-color="red"
+    >
+      <van-swipe-item
+        v-for="bannerItem in bannerList"
+        :key="bannerItem.id"
+      >
         <img :src="bannerItem.pic" />
-      </van-swipe-item>
-    </van-swipe>
+        </van-swipe-item>
+        </van-swipe>
   </div>
 </template>
 
@@ -23,14 +30,14 @@ export default {
       bannerList: [],
     });
 
-    onMounted(() => {
-      queryBannerList();
-    });
-
     const queryBannerList = async () => {
       const result = await request.queryBannerList({ type: 2 });
       state.bannerList = result.banners;
     };
+
+    onMounted(() => {
+      queryBannerList();
+    });
 
     return {
       ...toRefs(state),
@@ -41,11 +48,9 @@ export default {
 
 <style lang="scss" scoped>
 .swipe-wrapper {
-  width: 90%;
-  position: absolute;
-  top: 130px;
-  left: 50%;
-  transform: translateX(-50%);
+  padding: 0 30px;
+  position: relative;
+  top: -60px;
 
   .my-swipe {
     height: 270px;

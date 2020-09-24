@@ -8,5 +8,3 @@ files.keys().forEach((key) => {
 });
 
 export default routes;
-
-console.log(routes, 1111);

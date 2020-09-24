@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import "lib-flexible";
 import "./style/normalize.scss";
+import "./static/iconfont/iconfont.css";
 
 createApp(App)
   .use(store)
