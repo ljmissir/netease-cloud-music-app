@@ -34,7 +34,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.recommend-wrapper {
-}
-</style>
+<style lang="scss" scoped></style>
