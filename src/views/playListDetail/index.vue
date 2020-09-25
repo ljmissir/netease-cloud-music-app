@@ -1,14 +1,14 @@
 <template>
   <div>
     <Cover :coverInfo="coverInfo" />
-    <Songs :songs="songs" />
+    <Songs :songs="songs" style="position:relative;top:-30px;" />
   </div>
 </template>
 
 <script>
 import request from "@/services";
 import Cover from "./components/cover";
-import Songs from "./components/songs";
+import Songs from "@/components/SongList";
 const { reactive, toRefs, onMounted } = require("vue");
 const { useRoute } = require("vue-router");
 
@@ -30,7 +30,7 @@ export default {
     // 获取歌单详情
     const queryPlayListDetail = async () => {
       const result = await request.queryPlayListDetail({ id });
-      const ids = result.playlist.trackIds.map(item => item.id).join(",");
+      const ids = result.playlist.trackIds.map((item) => item.id).join(",");
       const { coverImgUrl, name, description } = result.playlist;
       const { backgroundUrl, nickname, avatarUrl } = result.playlist.creator;
       state.coverInfo = {
@@ -45,7 +45,7 @@ export default {
     };
 
     // 获取歌单所有歌曲
-    const querySongDetail = async ids => {
+    const querySongDetail = async (ids) => {
       const result = await request.querySongDetail({ ids });
       state.songs = result.songs;
     };
@@ -61,5 +61,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

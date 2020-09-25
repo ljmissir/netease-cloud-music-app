@@ -2,9 +2,10 @@
   <div class="app">
     <router-view />
     <TabBar v-show="showTabbar" />
-    <Player/>
+    <Player />
   </div>
 </template>
+
 <script>
 import TabBar from "@/components/TabBar";
 import Player from "@/views/player";

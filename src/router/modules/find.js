@@ -11,4 +11,12 @@ export default [
     path: "/playListDetail/:id",
     component: () => import("@/views/playListDetail/index"),
   },
+  {
+    path: "/songrank",
+    component: () => import("@/views/songRank/index"),
+  },
+  {
+    path: "/singer/:id",
+    component: () => import("@/views/songDetail/index"),
+  },
 ];

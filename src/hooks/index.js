@@ -24,12 +24,10 @@ const useCountDown = (count) => {
   return [text, setCount, count];
 };
 
-const useSetPlayList = ({ songs, curSong }) => {
+const useSetPlayList = ({ songs, id }) => {
   const store = useStore();
-  console.log(curSong, 987);
-  const setPlayList = () => {
-    store.dispatch("setPlayList", songs);
-  };
+
+  const setPlayList = () => store.dispatch("setPlayList", { songs, id });
 
   return { setPlayList };
 };

@@ -2,9 +2,6 @@ import { curSong } from "./getters";
 import * as types from "./mutation-types";
 
 const mutations = {
-  [types.SET_BASE_PARAMS](state, baseParams) {
-    state.baseParams = baseParams;
-  },
   [types.SET_USER](state, user) {
     state.user = user;
   },
@@ -16,6 +13,9 @@ const mutations = {
   },
   [types.SET_CUR_INDEX](state, curIndex) {
     state.curIndex = curIndex;
+  },
+  [types.SET_PLAYING](state, playing) {
+    state.playing = playing;
   },
 };
 

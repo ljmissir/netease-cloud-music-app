@@ -1,5 +1,5 @@
 <template>
-  <div class="play-list">
+  <div class="song-list">
     <van-list>
       <van-cell
         class="song-item"
@@ -11,26 +11,26 @@
         <div class="info">
           <img
             class="avatar"
+            v-show="showAvatar"
             :src="song.al.picUrl"
             alt=""
-          >
-            <div>
-              <p class="song-name">{{song.name}}</p>
-              <p class="singer-info">
-                <span class="singer-name">{{song.ar[0].name}}</span>
-                <span> - </span>
-                <span class="al-name">{{song.al.name}}</span>
-              </p>
-            </div>
+          />
+          <div>
+            <p class="song-name">{{ song.name }}</p>
+            <p class="singer-info">
+              <span class="singer-name">{{ song.ar[0].name }}</span>
+              <span> - </span>
+              <span class="al-name">{{ song.al.name }}</span>
+            </p>
+          </div>
         </div>
-        </van-cell>
+      </van-cell>
     </van-list>
   </div>
 </template>
 
 <script>
 import { List, Cell } from "vant";
-const { useSetPlayList } = require("@/hooks");
 const { reactive, toRefs } = require("vue");
 const { useStore } = require("vuex");
 
@@ -39,6 +39,10 @@ export default {
     songs: {
       type: Array,
       require: true,
+    },
+    showAvatar: {
+      type: Boolean,
+      default: true,
     },
   },
   components: {
@@ -54,18 +58,10 @@ export default {
 
     const store = useStore();
 
-    const querySong = async song => {
-      console.log(song);
-      const curSong = {
-        name: song.name,
-        id: song.id,
-        singerAvatar: song.al.picUrl,
-        url: `https://music.163.com/song/media/outer/url?id=${song.id}.mp3`,
-      };
-      const setPlayList = () => {
-        store.dispatch("setPlayList", { songs, curSong });
-      };
-      setPlayList();
+    const querySong = async (song) => {
+      const { id } = song;
+      const setPlayList = () => store.dispatch("setPlayList", { songs, id });
+      await setPlayList();
     };
 
     return {
@@ -78,11 +74,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.play-list {
-  position: absolute;
+.song-list {
   height: 100%;
   width: 100%;
-  top: 460px;
   .van-list {
     padding-bottom: 100px;
     .song-item {

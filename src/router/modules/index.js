@@ -7,4 +7,6 @@ files.keys().forEach((key) => {
   routes = [...routes, ...files(key).default];
 });
 
+console.log(routes, "routes");
+
 export default routes;

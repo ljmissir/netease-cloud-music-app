@@ -1,8 +1,8 @@
 const state = {
-  baseParams: {},
   user: "",
   playList: [],
   curIndex: 0,
+  playing: false,
 };
 
 export default state;

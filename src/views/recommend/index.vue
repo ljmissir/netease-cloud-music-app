@@ -1,44 +1,21 @@
 <template>
-  <div class="song-list-wrapper">
-    <van-list>
-      <van-cell
-        is-link
-        v-for="song in songList"
-        :key="song.id"
-      >
-        <div className="info">
-          <img
-            class="avatar"
-            :src="song.al.picUrl"
-            alt=""
-          >
-            <div>
-              <p className="song-name">{{song.name}}</p>
-              <p className="singer-info">
-                <span className="singer-name">{{song.ar[0].name}}</span>
-                <span> - </span>
-                <span className="al-name">{{song.al.name}}</span>
-              </p>
-            </div>
-        </div>
-        </van-cell>
-    </van-list>
+  <div class="recommend-wrapper">
+    <Songs :songs="songs" />
   </div>
 </template>
 
 <script>
-import { List, Cell } from "vant";
 import request from "@/services";
+import Songs from "@/components/SongList";
 const { reactive, toRefs, onMounted } = require("vue");
 
 export default {
   components: {
-    VanList: List,
-    VanCell: Cell,
+    Songs,
   },
   setup() {
     const state = reactive({
-      songList: [],
+      songs: [],
     });
 
     onMounted(() => {
@@ -47,7 +24,7 @@ export default {
 
     const queryRecommend = async () => {
       const result = await request.queryRecommendSong();
-      state.songList = result.data.dailySongs;
+      state.songs = result.data.dailySongs;
     };
 
     return {
@@ -58,24 +35,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.song-list-wrapper {
-  .info {
-    font-size: 28px;
-    display: flex;
-    .avatar {
-      width: 100px;
-      margin-right: 30px;
-      border-radius: 6px;
-    }
-    .singer-info {
-      font-size: 24px;
-      .singer-name {
-        color: rgb(89, 89, 148);
-      }
-      .al-name {
-        color: rgb(154, 154, 154);
-      }
-    }
-  }
+.recommend-wrapper {
 }
 </style>
