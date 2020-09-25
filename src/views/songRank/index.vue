@@ -23,12 +23,12 @@ const { useRouter } = require("vue-router");
 export default {
   components: {
     VanList: List,
-    VanCell: Cell,
+    VanCell: Cell
   },
   setup() {
     const state = reactive({
       singerList: [],
-      offset: 0,
+      offset: 0
     });
 
     const router = useRouter();
@@ -40,7 +40,7 @@ export default {
     };
 
     // 根据歌手id查询歌手的歌曲
-    const querySongs = (singer) => {
+    const querySongs = singer => {
       router.push(`/singer/${singer.id}`);
     };
 
@@ -50,9 +50,9 @@ export default {
 
     return {
       ...toRefs(state),
-      querySongs,
+      querySongs
     };
-  },
+  }
 };
 </script>
 
@@ -60,6 +60,8 @@ export default {
 .singer-list {
   .van-list {
     .van-cell {
+      display: flex;
+      align-items: center;
       .avatar {
         width: 80px;
         height: 80px;
