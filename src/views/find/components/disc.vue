@@ -1,16 +1,24 @@
 <template>
-  <div class="disc-wrapper">
-    <router-link
-      class="disc-item"
-      v-for="item in disc"
-      :key="item.id"
-      :to="`/playListDetail/${item.id}`"
-    >
-      <div className="img-wrapper">
-        <img :src="item.picUrl" />
-      </div>
-      <p className="name">{{ item.name }}</p>
-    </router-link>
+  <div>
+    <div class="disc-list-title">
+      <span>发现好歌单</span>
+      <router-link class="more" to="/playlistCollection">
+        查看更多
+      </router-link>
+    </div>
+    <div class="disc-wrapper">
+      <router-link
+        class="disc-item"
+        v-for="item in disc"
+        :key="item.id"
+        :to="`/playListDetail/${item.id}`"
+      >
+        <div className="img-wrapper">
+          <img :src="item.picUrl" />
+        </div>
+        <p className="name">{{ item.name }}</p>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -42,6 +50,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.disc-list-title {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .more {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  }
+}
 .disc-wrapper {
   padding: 40px 30px;
   display: flex;

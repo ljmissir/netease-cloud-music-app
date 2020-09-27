@@ -18,3 +18,8 @@ export const queryUserDetail = (params) => {
 export const queryUserDj = (params) => {
   return get("/user/dj", params);
 };
+
+// 获取用户信息 , 歌单，收藏，mv, dj 数量
+export const queryUserSubcount = (params) => {
+  return get("/user/subcount", params);
+};

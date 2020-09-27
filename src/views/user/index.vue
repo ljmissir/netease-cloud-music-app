@@ -1,25 +1,34 @@
 <template>
   <div>
-用户中心
+    用户中心
   </div>
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import request from "@/services";
+const { reactive, toRefs, onMounted } = require("vue");
 
 export default {
-  setup () {
+  setup() {
     const state = reactive({
-      count: 0,
-    })
-  
+      subCount: {},
+    });
+
+    const queryUserSubcount = async () => {
+      const result = await request.queryUserSubcount();
+      state.subCount = result;
+      console.log(result);
+    };
+
+    onMounted(() => {
+      queryUserSubcount();
+    });
+
     return {
       ...toRefs(state),
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

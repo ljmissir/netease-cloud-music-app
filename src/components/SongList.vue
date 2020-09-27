@@ -38,27 +38,27 @@ export default {
   props: {
     songs: {
       type: Array,
-      require: true
+      require: true,
     },
     showAvatar: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   components: {
     VanList: List,
-    VanCell: Cell
+    VanCell: Cell,
   },
   setup(props) {
     const state = reactive({
-      count: 0
+      count: 0,
     });
 
     const { songs } = toRefs(props);
 
     const store = useStore();
 
-    const querySong = async song => {
+    const querySong = async (song) => {
       const { id } = song;
       const setPlayList = () => store.dispatch("setPlayList", { songs, id });
       await setPlayList();
@@ -67,9 +67,9 @@ export default {
     return {
       ...toRefs(state),
       songs,
-      querySong
+      querySong,
     };
-  }
+  },
 };
 </script>
 
@@ -78,7 +78,7 @@ export default {
   height: 100%;
   width: 100%;
   .van-list {
-    padding-bottom: 100px;
+    // padding-bottom: 100px;
     .song-item {
       border-radius: 40px 40px 0px 0px;
       display: flex;
