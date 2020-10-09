@@ -1,6 +1,6 @@
 <template>
   <van-tabbar
-    active-color='red'
+    active-color="red"
     v-model="active"
   >
     <van-tabbar-item
@@ -13,7 +13,7 @@
           class="iconfont"
           :class="'icon-' + tab.icon"
         ></span>
-          <p>{{tab.title}}</p>
+          <p>{{ tab.title }}</p>
       </div>
       </van-tabbar-item>
       </van-tabbar>

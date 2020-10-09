@@ -1,16 +1,26 @@
 <template>
   <div class="singer-list">
-    <van-list>
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      offset="30"
+      finished-text="没有更多了"
+      @load="querySinger"
+    >
       <van-cell
         v-for="singer in singerList"
         :key="singer.id"
         @click="querySongs(singer)"
         is-link
       >
-        <img class="avatar" :src="singer.picUrl" alt="" />
+        <img
+          class="avatar"
+          :src="singer.picUrl"
+          alt=""
+        />
         <span>{{ singer.name }}</span>
-      </van-cell>
-    </van-list>
+        </van-cell>
+        </van-list>
   </div>
 </template>
 
@@ -23,20 +33,33 @@ const { useRouter } = require("vue-router");
 export default {
   components: {
     VanList: List,
-    VanCell: Cell
+    VanCell: Cell,
   },
   setup() {
     const state = reactive({
       singerList: [],
-      offset: 0
+      offset: 0,
+      loading: true,
+      finished: false,
+      limit: 30,
     });
 
     const router = useRouter();
 
     // 查询歌手列表
-    const querySinger = async () => {
-      const result = await request.querySingerList({ limit: 25 });
-      state.singerList = result.artists;
+    const querySinger = () => {
+      let { singerList, limit, offset } = state;
+      request.querySingerList({ type: -1, limit, offset }).then(res => {
+        state.loading = false;
+        state.offset += state.limit;
+        if (res.artists.length === 0) {
+          state.finished = true;
+        }
+        if (!res.more) {
+          state.finished = true;
+        }
+        state.singerList = [...state.singerList, ...res.artists];
+      });
     };
 
     // 根据歌手id查询歌手的歌曲
@@ -45,14 +68,15 @@ export default {
     };
 
     onMounted(() => {
-      querySinger();
+      // querySinger();
     });
 
     return {
       ...toRefs(state),
-      querySongs
+      querySinger,
+      querySongs,
     };
-  }
+  },
 };
 </script>
 

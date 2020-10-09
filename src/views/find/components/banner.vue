@@ -1,10 +1,17 @@
 <template>
   <div class="swipe-wrapper">
-    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="red">
-      <van-swipe-item v-for="bannerItem in bannerList" :key="bannerItem.id">
+    <van-swipe
+      class="my-swipe"
+      :autoplay="3000"
+      indicator-color="red"
+    >
+      <van-swipe-item
+        v-for="bannerItem in bannerList"
+        :key="bannerItem.id"
+      >
         <img :src="bannerItem.pic" />
-      </van-swipe-item>
-    </van-swipe>
+        </van-swipe-item>
+        </van-swipe>
   </div>
 </template>
 

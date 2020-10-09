@@ -2,9 +2,12 @@
   <div>
     <div class="disc-list-title">
       <span>发现好歌单</span>
-      <router-link class="more" to="/playlistCollection">
+      <router-link
+        class="more"
+        to="/playlistCollection"
+      >
         查看更多
-      </router-link>
+        </router-link>
     </div>
     <div class="disc-wrapper">
       <router-link
@@ -17,7 +20,7 @@
           <img :src="item.picUrl" />
         </div>
         <p className="name">{{ item.name }}</p>
-      </router-link>
+        </router-link>
     </div>
   </div>
 </template>

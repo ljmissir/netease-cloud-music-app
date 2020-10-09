@@ -24,7 +24,7 @@
             </p>
           </div>
         </div>
-      </van-cell>
+        </van-cell>
     </van-list>
   </div>
 </template>
@@ -58,7 +58,7 @@ export default {
 
     const store = useStore();
 
-    const querySong = async (song) => {
+    const querySong = async song => {
       const { id } = song;
       const setPlayList = () => store.dispatch("setPlayList", { songs, id });
       await setPlayList();

@@ -33,11 +33,11 @@ export default {
 
     let { curIndex, playList } = store.getters;
 
-    const setCurIndex = (curIndex) => {
+    const setCurIndex = curIndex => {
       store.commit("SET_CUR_INDEX", curIndex);
     };
 
-    const updateTime = (e) => {
+    const updateTime = e => {
       const time = e.target.currentTime;
     };
 
@@ -60,7 +60,7 @@ export default {
 
     const error = () => {};
 
-    const querySongUrl = async (id) => {
+    const querySongUrl = async id => {
       if (id) {
         const result = await request.querySongUrl({ id });
         console.log(result);
