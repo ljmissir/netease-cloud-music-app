@@ -13,14 +13,10 @@
         @click="querySongs(singer)"
         is-link
       >
-        <img
-          class="avatar"
-          :src="singer.picUrl"
-          alt=""
-        />
+        <img class="avatar" :src="singer.picUrl" alt="" />
         <span>{{ singer.name }}</span>
-        </van-cell>
-        </van-list>
+      </van-cell>
+    </van-list>
   </div>
 </template>
 
@@ -49,7 +45,7 @@ export default {
     // 查询歌手列表
     const querySinger = () => {
       let { singerList, limit, offset } = state;
-      request.querySingerList({ type: -1, limit, offset }).then(res => {
+      request.querySingerList({ type: -1, limit, offset }).then((res) => {
         state.loading = false;
         state.offset += state.limit;
         if (res.artists.length === 0) {
@@ -63,7 +59,7 @@ export default {
     };
 
     // 根据歌手id查询歌手的歌曲
-    const querySongs = singer => {
+    const querySongs = (singer) => {
       router.push(`/singer/${singer.id}`);
     };
 

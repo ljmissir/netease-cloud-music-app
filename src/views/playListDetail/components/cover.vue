@@ -3,10 +3,7 @@
     <div class="cover"></div>
     <div class="cover-content">
       <div class="img-wrapper">
-        <img
-          class="img"
-          :src="coverInfo.coverImgUrl"
-        />
+        <img class="img" :src="coverInfo.coverImgUrl" />
         <div class="description">
           <div class="name">{{ coverInfo.name }}</div>
           <div class="nick-name">

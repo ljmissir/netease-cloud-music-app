@@ -33,11 +33,11 @@ export default {
 
     let { curIndex, playList } = store.getters;
 
-    const setCurIndex = curIndex => {
+    const setCurIndex = (curIndex) => {
       store.commit("SET_CUR_INDEX", curIndex);
     };
 
-    const updateTime = e => {
+    const updateTime = (e) => {
       const time = e.target.currentTime;
     };
 
@@ -60,7 +60,7 @@ export default {
 
     const error = () => {};
 
-    const querySongUrl = async id => {
+    const querySongUrl = async (id) => {
       if (id) {
         const result = await request.querySongUrl({ id });
         console.log(result);
@@ -71,9 +71,9 @@ export default {
 
     // 根据歌曲id拼接歌曲播放url
     watchEffect(() => {
-      querySongUrl(store.getters.curSong.id);
-      // const domain = `https://music.163.com/song/media/outer/url?`;
-      // state.curSongUrl = domain + `id=${store.getters.curSong.id}`;
+      // querySongUrl(store.getters.curSong.id);
+      const domain = `https://music.163.com/song/media/outer/url?`;
+      state.curSongUrl = domain + `id=${store.getters.curSong.id}`;
       // if (audioRef.value) {
       //   audioRef.value.play();
       // }
