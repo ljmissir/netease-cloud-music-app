@@ -5,7 +5,12 @@
       class="list-body"
       :style="{ transform: `translate3d(0, ${startOffset}px, 0)` }"
     >
-      <van-cell v-for="item in visibleList" :key="item.id" is-link>
+      <van-cell
+        v-for="item in visibleList"
+        :key="item.id"
+        is-link
+        @click="toDetail(item)"
+      >
         <img class="avatar" :src="item.picUrl" alt="" />
         <span>{{ item.name }}</span>
       </van-cell>
@@ -31,7 +36,7 @@ export default {
     VanList: List,
     VanCell: Cell,
   },
-  setup(props) {
+  setup(props, context) {
     const state = reactive({
       startIndex: 0,
       endIndex: null,
@@ -62,6 +67,7 @@ export default {
       );
     });
 
+    // 监听滚动
     const scrollEvent = utils.debounce(() => {
       // 当前滚动位置
       const scrollTop = viewContainer.value.scrollTop;
@@ -73,6 +79,11 @@ export default {
       state.startOffset = scrollTop - (scrollTop % state.itemHeight);
     }, 100);
 
+    const toDetail = (item) => {
+      const { emit } = context;
+      emit("toDetail", item);
+    };
+
     onMounted(() => {
       state.endIndex = state.startIndex + visibleCount.value;
     });
@@ -83,6 +94,7 @@ export default {
       listHeight,
       viewContainer,
       visibleList,
+      toDetail,
     };
   },
 };
