@@ -11,7 +11,7 @@ export const setUser = async function({ commit }, data) {
 };
 
 export const setPlayList = async function({ commit }, { songs, id }) {
-  const curIndex = songs.value.findIndex((cur) => cur.id === id);
+  const curIndex = songs.findIndex((cur) => cur.id === id);
   commit(types.SET_CUR_INDEX, curIndex);
   // commit(types.SET_CUR_SONG, curSong);
   commit(types.SET_PLAY_LIST, songs);

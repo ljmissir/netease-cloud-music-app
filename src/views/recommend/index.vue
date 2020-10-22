@@ -1,22 +1,30 @@
 <template>
   <div class="recommend-wrapper">
-    <Songs :songs="songs" />
+    <ListView
+      :listData="songs"
+      :isSong="true"
+      :showAvatar="true"
+      @toDetail="querySong"
+    />
   </div>
 </template>
 
 <script>
 import request from "@/services";
-import Songs from "@/components/SongList";
+import ListView from "@/components/ListView";
 const { reactive, toRefs, onMounted } = require("vue");
+const { useStore } = require("vuex");
 
 export default {
   components: {
-    Songs,
+    ListView,
   },
   setup() {
     const state = reactive({
       songs: [],
     });
+
+    const store = useStore();
 
     onMounted(() => {
       queryRecommend();
@@ -27,8 +35,16 @@ export default {
       state.songs = result.data.dailySongs;
     };
 
+    const querySong = async (song) => {
+      const { id } = song;
+      const { songs } = state;
+      const setPlayList = () => store.dispatch("setPlayList", { songs, id });
+      await setPlayList();
+    };
+
     return {
       ...toRefs(state),
+      querySong,
     };
   },
 };

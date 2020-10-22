@@ -60,7 +60,9 @@ export default {
 
     const querySong = async (song) => {
       const { id } = song;
-      const setPlayList = () => store.dispatch("setPlayList", { songs, id });
+      const setPlayList = () => {
+        store.dispatch("setPlayList", { songs: props.songs, id });
+      };
       await setPlayList();
     };
 
