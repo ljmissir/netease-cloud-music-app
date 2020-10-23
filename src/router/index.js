@@ -4,17 +4,17 @@ import authorRoutes from "./modules/index";
 const constanceRoutes = [
   {
     path: "/",
-    redirect: "/login",
+    redirect: "/login"
   },
   {
     path: "/login",
-    component: () => import("@/views/login/index"),
-  },
+    component: () => import("@/views/login/index")
+  }
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [...constanceRoutes, ...authorRoutes],
+  routes: [...constanceRoutes, ...authorRoutes]
 });
 
 export default router;

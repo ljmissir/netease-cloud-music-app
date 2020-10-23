@@ -1,6 +1,6 @@
 export default [
   {
     path: "/search",
-    component: () => import("@/views/search/index"),
-  },
+    component: () => import("@/views/search/index")
+  }
 ];

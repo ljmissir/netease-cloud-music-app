@@ -35,7 +35,7 @@ const utils = {
         pre = now;
       }
     };
-  },
+  }
 };
 
 export default utils;

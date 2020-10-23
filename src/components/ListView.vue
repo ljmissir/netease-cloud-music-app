@@ -48,36 +48,46 @@
 import request from "@/services";
 import { List, Cell } from "vant";
 import utils from "@/utils";
-const { reactive, toRefs, onMounted, computed, ref } = require("vue");
+const {
+  reactive,
+  toRefs,
+  onMounted,
+  computed,
+  ref,
+  getCurrentInstance
+} = require("vue");
 
 export default {
   props: {
     listData: {
       required: true,
       default: () => new Array(),
-      type: Array,
+      type: Array
     },
     isSong: {
       required: false,
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     showAvatar: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   components: {
     VanList: List,
-    VanCell: Cell,
+    VanCell: Cell
   },
   setup(props, context) {
     const state = reactive({
       startIndex: 0,
       endIndex: null,
       itemHeight: 60,
-      startOffset: 0,
+      startOffset: 0
     });
+
+    const instance = getCurrentInstance();
+    console.log(instance, 1234);
 
     const { listData, isSong, showAvatar } = toRefs(props);
 
@@ -116,6 +126,13 @@ export default {
       state.endIndex = state.startIndex + visibleCount.value;
       // 滚动时列表的偏移量
       state.startOffset = scrollTop - (scrollTop % state.itemHeight);
+
+      console.log(
+        scrollTop,
+        state.startIndex,
+        state.endIndex,
+        state.startOffset
+      );
     }, 100);
 
     const toDetail = (item) => {
@@ -136,9 +153,9 @@ export default {
       toDetail,
       getListClass,
       getCellClass,
-      showAvatar,
+      showAvatar
     };
-  },
+  }
 };
 </script>
 

@@ -16,11 +16,11 @@ const { reactive, toRefs, onMounted } = require("vue");
 export default {
   components: {
     VanSwipe: Swipe,
-    VanSwipeItem: SwipeItem,
+    VanSwipeItem: SwipeItem
   },
   setup() {
     const state = reactive({
-      bannerList: [],
+      bannerList: []
     });
 
     const queryBannerList = async () => {
@@ -33,9 +33,9 @@ export default {
     });
 
     return {
-      ...toRefs(state),
+      ...toRefs(state)
     };
-  },
+  }
 };
 </script>
 

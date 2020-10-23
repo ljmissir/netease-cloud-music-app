@@ -6,7 +6,7 @@ const Cookies = require("js-cookie");
 
 const service = axios.create({
   baseURL: "https://api.mtnhao.com",
-  timeout: 10000,
+  timeout: 10000
 });
 
 // 请求头
@@ -74,7 +74,7 @@ export function get(url, params) {
   return new Promise((resolve, reject) => {
     service
       .get(url, {
-        params,
+        params
       })
       .then((res) => {
         if (res.data.code === 200) {

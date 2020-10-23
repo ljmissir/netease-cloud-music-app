@@ -22,7 +22,7 @@ export default {
   setup() {
     const state = reactive({
       songReady: false,
-      curSongUrl: "",
+      curSongUrl: ""
     });
 
     const audioRef = ref(null);
@@ -85,9 +85,9 @@ export default {
       ended,
       error,
       updateTime,
-      ...toRefs(state),
+      ...toRefs(state)
     };
-  },
+  }
 };
 </script>
 

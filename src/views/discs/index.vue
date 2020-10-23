@@ -8,13 +8,13 @@ const { reactive, toRefs } = require("vue");
 export default {
   setup() {
     const state = reactive({
-      count: 0,
+      count: 0
     });
 
     return {
-      ...toRefs(state),
+      ...toRefs(state)
     };
-  },
+  }
 };
 </script>
 

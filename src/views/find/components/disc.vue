@@ -30,7 +30,7 @@ export default {
   components: {},
   setup() {
     const state = reactive({
-      disc: [],
+      disc: []
     });
 
     onMounted(() => {
@@ -43,9 +43,9 @@ export default {
     };
 
     return {
-      ...toRefs(state),
+      ...toRefs(state)
     };
-  },
+  }
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{username}}
+    {{ username }}
   </div>
 </template>
 
@@ -13,18 +13,17 @@ export default {
     const store = useStore();
 
     const state = reactive({
-      count: 0,
+      count: 0
     });
 
     const username = computed(() => store.state.username);
 
     return {
       username,
-      ...toRefs(state),
+      ...toRefs(state)
     };
-  },
+  }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

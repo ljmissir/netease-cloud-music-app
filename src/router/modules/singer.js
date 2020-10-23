@@ -1,6 +1,6 @@
 export default [
   {
     path: "/singer",
-    component: () => import("@/views/singer/index"),
-  },
+    component: () => import("@/views/singer/index")
+  }
 ];

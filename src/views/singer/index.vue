@@ -1,25 +1,23 @@
 <template>
   <div>
-歌手列表
+    歌手列表
   </div>
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs } from "vue";
 
 export default {
-  setup () {
+  setup() {
     const state = reactive({
-      count: 0,
-    })
+      count: 0
+    });
 
     return {
-      ...toRefs(state),
-    }
+      ...toRefs(state)
+    };
   }
-}
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

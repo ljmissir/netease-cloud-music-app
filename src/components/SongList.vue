@@ -38,20 +38,20 @@ export default {
   props: {
     songs: {
       type: Array,
-      require: true,
+      require: true
     },
     showAvatar: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   components: {
     VanList: List,
-    VanCell: Cell,
+    VanCell: Cell
   },
   setup(props) {
     const state = reactive({
-      count: 0,
+      count: 0
     });
 
     const { songs } = toRefs(props);
@@ -69,9 +69,9 @@ export default {
     return {
       ...toRefs(state),
       songs,
-      querySong,
+      querySong
     };
-  },
+  }
 };
 </script>
 

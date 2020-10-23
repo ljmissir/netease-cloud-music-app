@@ -15,12 +15,12 @@ const { useRoute } = require("vue-router");
 export default {
   components: {
     Cover,
-    Songs,
+    Songs
   },
   setup() {
     const state = reactive({
       coverInfo: {},
-      songs: [],
+      songs: []
     });
 
     const route = useRoute();
@@ -39,7 +39,7 @@ export default {
         description: description ? description.slice(0, 30) : "暂无简介",
         backgroundUrl,
         nickname,
-        avatarUrl,
+        avatarUrl
       };
       await querySongDetail(ids);
     };
@@ -55,9 +55,9 @@ export default {
     });
 
     return {
-      ...toRefs(state),
+      ...toRefs(state)
     };
-  },
+  }
 };
 </script>
 

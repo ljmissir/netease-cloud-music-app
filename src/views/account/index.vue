@@ -12,11 +12,11 @@ const { useRouter } = require("vue-router");
 
 export default {
   components: {
-    ListView,
+    ListView
   },
   setup() {
     const state = reactive({
-      artists: [],
+      artists: []
     });
 
     const router = useRouter();
@@ -37,8 +37,8 @@ export default {
 
     return {
       ...toRefs(state),
-      querySongs,
+      querySongs
     };
-  },
+  }
 };
 </script>

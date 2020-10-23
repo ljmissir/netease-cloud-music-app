@@ -2,7 +2,7 @@ const state = {
   user: "",
   playList: [],
   curIndex: 0,
-  playing: false,
+  playing: false
 };
 
 export default state;

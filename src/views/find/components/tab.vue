@@ -22,7 +22,7 @@ export default {
   setup() {
     const state = reactive({
       tabList: [],
-      currentDate: "",
+      currentDate: ""
     });
 
     onMounted(() => {
@@ -51,9 +51,9 @@ export default {
 
     return {
       ...toRefs(state),
-      resolvePath,
+      resolvePath
     };
-  },
+  }
 };
 </script>
 

@@ -1,9 +1,6 @@
 <template>
   <div class="header">
-    <van-search
-      v-model="hotSearch"
-      @focus="search"
-    />
+    <van-search v-model="hotSearch" @focus="search" />
   </div>
 </template>
 
@@ -17,7 +14,7 @@ export default {
   components: { VanSearch: Search },
   setup() {
     const state = reactive({
-      hotSearch: "",
+      hotSearch: ""
     });
 
     const router = useRouter();
@@ -38,9 +35,9 @@ export default {
 
     return {
       ...toRefs(state),
-      search,
+      search
     };
-  },
+  }
 };
 </script>
 

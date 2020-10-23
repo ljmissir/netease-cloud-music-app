@@ -24,21 +24,21 @@ export default {
   props: {
     coverInfo: {
       type: Object,
-      require: true,
-    },
+      require: true
+    }
   },
   setup(props) {
     const state = reactive({
-      count: 0,
+      count: 0
     });
 
     const { coverInfo } = toRefs(props);
 
     return {
       ...toRefs(state),
-      coverInfo,
+      coverInfo
     };
-  },
+  }
 };
 </script>
 

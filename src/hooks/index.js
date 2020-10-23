@@ -34,5 +34,5 @@ const useSetPlayList = ({ songs, id }) => {
 
 module.exports = {
   useCountDown,
-  useSetPlayList,
+  useSetPlayList
 };

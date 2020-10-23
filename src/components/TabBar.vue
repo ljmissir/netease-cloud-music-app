@@ -1,22 +1,16 @@
 <template>
-  <van-tabbar
-    active-color="red"
-    v-model="active"
-  >
+  <van-tabbar active-color="red" v-model="active">
     <van-tabbar-item
       v-for="tab in tabBar"
       :key="tab.path"
       @click="toggle(tab.path)"
     >
       <div class="icon-wrapper">
-        <span
-          class="iconfont"
-          :class="'icon-' + tab.icon"
-        ></span>
-          <p>{{ tab.title }}</p>
+        <span class="iconfont" :class="'icon-' + tab.icon"></span>
+        <p>{{ tab.title }}</p>
       </div>
-      </van-tabbar-item>
-      </van-tabbar>
+    </van-tabbar-item>
+  </van-tabbar>
 </template>
 
 <script>
@@ -27,7 +21,7 @@ const { useRouter } = require("vue-router");
 export default {
   components: {
     VanTabbar: Tabbar,
-    VanTabbarItem: TabbarItem,
+    VanTabbarItem: TabbarItem
   },
   setup() {
     const state = reactive({
@@ -37,19 +31,19 @@ export default {
         { title: "视频", path: "/video", icon: "video" },
         { title: "我的", path: "/user", icon: "music" },
         { title: "云村", path: "/cloud", icon: "qunliao" },
-        { title: "账号", path: "/account", icon: "zhanghao" },
-      ],
+        { title: "账号", path: "/account", icon: "zhanghao" }
+      ]
     });
 
     const router = useRouter();
 
-    const toggle = path => router.push(path);
+    const toggle = (path) => router.push(path);
 
     return {
       ...toRefs(state),
-      toggle,
+      toggle
     };
-  },
+  }
 };
 </script>
 

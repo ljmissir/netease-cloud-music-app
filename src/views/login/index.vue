@@ -1,20 +1,14 @@
 <template>
   <div class="login-wrapper">
-    <van-field
-      placeholder="输入邮箱"
-      v-model="email"
-    />
-    <van-field
-      placeholder="输入密码"
-      type="password"
-      v-model="password"
-    />
+    <van-field placeholder="输入邮箱" v-model="email" />
+    <van-field placeholder="输入密码" type="password" v-model="password" />
     <van-button
       class="login-btn"
       type="primary"
       @click="submit"
       :disabled="disabled"
-    >登录</van-button>
+      >登录</van-button
+    >
   </div>
 </template>
 
@@ -30,14 +24,14 @@ export default {
 
     const state = reactive({
       email: "ljmissir@163.com",
-      password: "",
+      password: ""
     });
 
     const disabled = computed(() => {
       return !state.email || !state.password;
     });
 
-    const setUser = params => {
+    const setUser = (params) => {
       store.dispatch("setUser", params);
     };
 
@@ -49,9 +43,9 @@ export default {
     return {
       ...toRefs(state),
       submit,
-      disabled,
+      disabled
     };
-  },
+  }
 };
 </script>
 

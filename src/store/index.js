@@ -14,5 +14,5 @@ export default createStore({
   actions,
   getters,
   // modules: {},
-  plugins: debug ? [createLogger()] : [],
+  plugins: debug ? [createLogger()] : []
 });

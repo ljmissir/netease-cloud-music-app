@@ -11,7 +11,7 @@ const { reactive, toRefs, onMounted } = require("vue");
 export default {
   setup() {
     const state = reactive({
-      subCount: {},
+      subCount: {}
     });
 
     const queryUserSubcount = async () => {
@@ -25,9 +25,9 @@ export default {
     });
 
     return {
-      ...toRefs(state),
+      ...toRefs(state)
     };
-  },
+  }
 };
 </script>
 

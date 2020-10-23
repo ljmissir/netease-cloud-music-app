@@ -19,15 +19,15 @@ export default {
     Search,
     Banner,
     Tab,
-    Disc,
+    Disc
   },
   setup() {
     const state = reactive({});
 
     return {
-      ...toRefs(state),
+      ...toRefs(state)
     };
-  },
+  }
 };
 </script>
 

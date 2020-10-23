@@ -2,27 +2,17 @@
   <div class="search-wrapper">
     <van-search v-model="hotSearch" />
     <div class="hots-list">
-      <div
-        class="hots-item"
-        v-for="(item, index) in hots"
-        :key="item.content"
-      >
-        <span
-          class="num"
-          :class="formatClass(index)"
-        >{{index + 1}}</span>
-          <div class="info">
-            <p class="search-word">
-              <span class="search">{{item.searchWord}}</span>
-              <img
-                :src="item.iconUrl"
-                alt=""
-              />
-            </p>
-            <p class="content">{{item.content}}</p>
-          </div>
+      <div class="hots-item" v-for="(item, index) in hots" :key="item.content">
+        <span class="num" :class="formatClass(index)">{{ index + 1 }}</span>
+        <div class="info">
+          <p class="search-word">
+            <span class="search">{{ item.searchWord }}</span>
+            <img :src="item.iconUrl" alt="" />
+          </p>
+          <p class="content">{{ item.content }}</p>
+        </div>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -33,12 +23,12 @@ const { reactive, toRefs, onMounted } = require("vue");
 
 export default {
   components: {
-    VanSearch: Search,
+    VanSearch: Search
   },
   setup() {
     const state = reactive({
       hotSearch: "",
-      hots: [],
+      hots: []
     });
 
     const queryHotSearchDetail = async () => {
@@ -52,7 +42,7 @@ export default {
       state.hotSearch = result.data.showKeyword;
     };
 
-    const formatClass = index => (index < 4 ? "hot" : "");
+    const formatClass = (index) => (index < 4 ? "hot" : "");
 
     onMounted(() => {
       queryHotSearchDetail();
@@ -61,9 +51,9 @@ export default {
 
     return {
       ...toRefs(state),
-      formatClass,
+      formatClass
     };
-  },
+  }
 };
 </script>
 

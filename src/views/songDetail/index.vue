@@ -16,11 +16,11 @@ const { useStore } = require("vuex");
 
 export default {
   components: {
-    ListView,
+    ListView
   },
   setup() {
     const state = reactive({
-      songs: [],
+      songs: []
     });
 
     const route = useRoute();
@@ -47,9 +47,9 @@ export default {
 
     return {
       ...toRefs(state),
-      querySong,
+      querySong
     };
-  },
+  }
 };
 </script>
 
