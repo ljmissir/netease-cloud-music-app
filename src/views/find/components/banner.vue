@@ -47,9 +47,10 @@ export default {
 
   .my-swipe {
     height: 270px;
+    border-radius: 20px;
 
     img {
-      border-radius: 16px;
+      //   border-radius: 16px;
       width: 100%;
     }
   }
